@@ -62,7 +62,7 @@ public class projetWebSemantiqueMultiple {
                 "PREFIX op: <http://environement.data.gov.au/def/op#>" +
                 "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
                 "PREFIX owl:<http://www.w3.org/2002/07/owl#>" +
-                "SELECT DISTINCT(?pays) ?SalaireMoyen ?EconomyGDPPerCapita" +
+                "SELECT DISTINCT(?pays) (AVG(?SalaireMoyen)/AVG(?EconomyGDPPerCapita)) AS ?result" +
                 "WHERE {" +
                 "  ?x schema:country ?paysStackOverflow;" +
                 "     schema:baseSalary ?salary." +
