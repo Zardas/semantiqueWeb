@@ -53,8 +53,8 @@ public class projetWebSemantique {
 	 */
 	 public request2() {
 		 return("SELECT DISTINCT(?ide) ?respondent2 {" +
-				"?respondent <https://schema.org/Country> 'Paraguay'";
-				"?respondent <http://purl/org/cwmo/tool> ?ide".
+				"?respondent <https://schema.org/Country> 'Paraguay';" +
+				"?respondent <http://purl/org/cwmo/tool> ?ide." +
 				BIND(<http://www.w3.org/2001/XMLSchema#integer>(?respondent) AS ?respondent2)
 			"}");
 	}
