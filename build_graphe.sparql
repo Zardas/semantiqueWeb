@@ -1,0 +1,31 @@
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX cwmo: 	<http://purl/org/cwmo/>
+PREFIX schema: 	<http://schema.org/>
+
+CONSTRUCT {
+	?URI a schema:Person;
+        schema:identifier               ?Respondent;
+        schema:repeatFrequency			?StackOverflowVisit;
+		dbpedia:duration 				?YearsCoding;
+		dbpedia:age 					?Age;
+		dbpedia:education 				?FormalEducation;
+		dbpedia:time 					?WakeTime;
+		cwmo:tool 						?IDE;
+		schema:gender 					?Gender;
+		schema:country 					?Country;
+		schema:jobTitle 				?DevType;
+		schema:employmentType 			?Employment;
+		schema:numberOfEmployees 		?companySize;
+		schema:openingHours 			?hoursComputer;
+		schema:operatingSystem 			?OperatingSystem;
+		schema:actionPlatform 			?Platform;
+		schema:ComputerLanguage 		?LanguageWorkedWith;
+		schema:CommunicateAction:object ?CommunicationTools;
+		schema:baseSalary 				?Salary.
+	?Salary schema:salaryCurrency 		?CurrencySymbol;
+			schema:estimatedSalary 		?ConvertedSalary;
+}
+FROM <file:dev.csv>
+WHERE {
+	BIND(URI(CONCAT('http://devellopeurs/', ?Respondent)) AS ?URI)
+}
