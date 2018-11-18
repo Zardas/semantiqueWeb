@@ -41,7 +41,7 @@ public class projetWebSemantique {
 	 * @param
 	 */
 	public request1() {
-		return ("SELECT ?country {" +
+		return ("SELECT ?country WHERE {" +
 				"?Respondent <https://schema.org/Country> ?Country;" +
 				"?Respondent <http://schema.org/numberOfEmployees> '10,000 or more employees'" +
 			"}");
@@ -52,7 +52,7 @@ public class projetWebSemantique {
 	 * @param
 	 */
 	 public request2() {
-		 return("SELECT DISTINCT(?ide) ?respondent2 {" +
+		 return("SELECT DISTINCT(?ide) ?respondent2 WHERE {" +
 				"?respondent <https://schema.org/Country> 'Paraguay';" +
 				"?respondent <http://purl/org/cwmo/tool> ?ide." +
 				BIND(<http://www.w3.org/2001/XMLSchema#integer>(?respondent) AS ?respondent2)
