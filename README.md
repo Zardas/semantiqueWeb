@@ -1,4 +1,5 @@
 # semantiqueWeb
 Projet de Web Sémantique de Master 1
 
-Liens Utiles:
+Requêtes simples : request1and2.java
+Requêtes combinées avec le dataset sur world happiness report : request3.java
