@@ -3,7 +3,8 @@
 
 <p>
 Requêtes simples : request1and2.java <br />
-Requêtes combinées avec le dataset sur world happiness report : request3.java
+Requêtes combinées avec le dataset sur world happiness report : request3.java <br />
+Slides de présentation : https://slides.com/antoinegodet/deck#/
 </p>
 
 <br />
