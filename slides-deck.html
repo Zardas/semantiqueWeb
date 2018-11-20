@@ -20,7 +20,7 @@
 </style>
 
 		<meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="kU5LCJ+uLxl9Z8p7j2LKh3aRPelFg3pcMxrXo0DBKUQymRwVHzobxm3+Kuf2k+mr3d/brkzYR7v4Jq/p2UIJag==" />
+<meta name="csrf-token" content="9wmNfmVUkqtZwH1fyOGOFF+c8XeOHqS7P5fWFK7NCAJaWtkdaSgCWQUpexGgRVOzBqnoJr6Qb4l/72S28GBrzw==" />
 		<style id="user-css-output" type="text/css"></style>
 	</head>
 	<body>
@@ -315,9 +315,11 @@
 <p>Les pays avec des développeurs travaillant dans des entreprises de plus de 10000 employés</p>
 </div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 930px; left: 25px; top: 420px;" data-block-id="b4176c32c31700be6b31019d0d6e9e2a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; text-align: left; font-size: 71%;" dir="ui">
-<p>SELECT <strong>DISTINCT(?country)</strong> {<br>
+<p>PREFIX xsd:&lt;http://www.w3.org/2001/XMLSchema#&gt;</p>
+
+<p>SELECT <strong>DISTINCT(?country)</strong> WHERE {<br>
                 <strong>?respondent</strong> <em>&lt;https://schema.org/Country&gt;</em> <strong>?Country;</strong><br>
-                <strong>?respondent</strong> <em>&lt;http://schema.org/numberOfEmployees&gt;</em> "10,000 or more employees".</p>
+                <strong>?respondent</strong> <em>&lt;http://schema.org/numberOfEmployees&gt;</em> '10,000 or more employees'.</p>
 
 <p>}</p>
 </div></div>
@@ -343,20 +345,18 @@
 <p>Les IDE utilisés par les informaticiens au Paraguay ainsi l'id desdits informaticiens</p>
 </div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 935px; left: 25px; top: 206px;" data-block-id="6251de6388e9c61eb62cf4aedf96b81f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; text-align: left; font-size: 71%; letter-spacing: -0.03em;" dir="ui" data-has-letter-spacing="">
-<p>SELECT <strong>DISTINCT(?ide)</strong> {<br>
-                <strong>?respondent</strong> <em>&lt;https://schema.org/Country&gt;</em> "Paraguay"<strong>;</strong><br>
+<p>PREFIX xsd:&lt;http;//www.w3.org/2001/XMLSchema#&gt;</p>
+
+<p>SELECT <strong>DISTINCT(?ide)</strong> <strong>?respondent2</strong> WHERE {<br>
+                <strong>?respondent</strong> <em>&lt;https://schema.org/Country&gt;</em> 'Paraguay<strong>';</strong><br>
                 <strong>?respondent</strong> <em>&lt;http://purl/org/cwmo/tool&gt;</em> ?ide.<br>
-                BIND(&lt;http://www.w3.org/2001/XMLSchema#integer&gt;(?<strong>respondent</strong>) AS ?<strong>respondent2</strong>)</p>
+                BIND(xsd:integer(?<strong>respondent</strong>) AS ?<strong>respondent2</strong>)</p>
 
 <p>}</p>
 </div></div>
-<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 107px; height: 91px; left: 25px; top: 445px;" data-block-id="60d4ccd3d9cbe1f319109930e38cacce"><div class="sl-block-content" data-shape-type="triangle-up" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 15;" data-shape-stroke-color="#222222" data-shape-stroke-width="7"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 107 91"><defs><clippath id="shape-mask-2-1540283479598"><polygon points="53.5,0 107,91 0,91"></polygon></clippath></defs><polygon points="53.5,0 107,91 0,91" clip-path="url(#shape-mask-2-1540283479598)" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#222222" stroke-width="14"></polygon></svg></div></div>
-<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 80px; left: 39px; top: 470px;" data-block-id="3d7df76390bc5ef501a562bf45308cea"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; font-size: 154%; color: rgb(34, 34, 34);">
-<p><strong>!</strong></p>
-</div></div>
-<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 145px; top: 445px;" data-block-id="74b2efdf314b02bbbd89fa483038b2ba"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; text-align: left; color: rgb(3, 3, 3); font-size: 84%;">
-<p><em>A cause d'un problème de Maven lié au proxy, nous n'avons pas pu installer Jena, et n'avons donc pas pu tester le bon fonctionnement de nos requêtes</em></p>
-</div></div></section><section data-background-color="#f5f1f1" data-id="125b979b7f66a1be3f7ba23a0801fc3c"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 645px;" data-block-id="115262efcba797bee3dcc04a72f2286e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; padding: 12px; font-size: 80%;">
+
+
+</section><section data-background-color="#f5f1f1" data-id="125b979b7f66a1be3f7ba23a0801fc3c"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 645px;" data-block-id="115262efcba797bee3dcc04a72f2286e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; padding: 12px; font-size: 80%;">
 <p>Gueguen Ronan - Bequet-Ermoy Charles - Godet Antoine<span> </span></p>
 </div></div>
 
@@ -375,7 +375,7 @@
 <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 775px; left: 25px; top: 101px;" data-block-id="64926dad580fb91efb18dc2a218499a5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
 <p style="text-align: left;">Nous avons décidé de lier avec le dataset sur le world happiness report</p>
 </div></div>
-<div class="sl-block" data-block-type="image" style="min-width: 4px; min-height: 4px; width: 615px; height: 448px; left: 25px; top: 196px;" data-block-id="da38e88f8fbf3b4a6913c188de85022e"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="874" data-natural-height="636" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/947559/images/5506423/requetemultiple.png"></div></div></section><section data-background-color="#f5f1f1" data-id="0a023298de34017b70411a0467264f5a"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 645px;" data-block-id="c0b79b2f0d3017b7166956c3fcfc4aaa"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: left; padding: 12px; font-size: 80%;">
+<div class="sl-block" data-block-type="image" style="min-width: 4px; min-height: 4px; width: 615px; height: 416px; left: 25px; top: 210px;" data-block-id="da38e88f8fbf3b4a6913c188de85022e"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="834" data-natural-height="564" data-lazy-loaded="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/947559/images/5508934/Capture_du_2018-11-20_13-05-19.png"></div></div></section><section data-background-color="#f5f1f1" data-id="0a023298de34017b70411a0467264f5a"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 645px;" data-block-id="c0b79b2f0d3017b7166956c3fcfc4aaa"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: left; padding: 12px; font-size: 80%;">
 <p>Gueguen Ronan - Bequet-Ermoy Charles - Godet Antoine<span> </span></p>
 </div></div>
 
@@ -390,7 +390,7 @@
 <div class="sl-block" data-block-type="text" style="height: auto; width: 886px; left: 19px; top: 77px;" data-block-id="68483ec62ac2c833189e5936679bb318"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; text-align: left; color: rgb(3, 3, 3); font-size: 94%;">
 <p>Seul élément pouvant être lié avec les autres datasets : <strong>le pays</strong></p>
 </div></div>
-<div class="sl-block" data-block-type="text" style="height: auto; width: 940px; left: 19px; top: 298px;" data-block-id="d7be5dc5cb1ccdc94d5d6c3d0b06ec52"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; text-align: left; font-size: 71%; letter-spacing: -0.03em;" dir="ui" data-has-letter-spacing="">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 940px; left: 10px; top: 255px;" data-block-id="d7be5dc5cb1ccdc94d5d6c3d0b06ec52"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; text-align: left; font-size: 71%; letter-spacing: -0.03em;" dir="ui" data-has-letter-spacing="">
 <p>SELECT DISTINCT(?pays) (AVG(<strong>?SalaireMoyen</strong>)/AVG(<strong>?EconomyGDPPPerCapita</strong>)) AS <strong>?result</strong> WHERE {<br>
                 <strong>?x</strong> <em>schema:country</em> <strong>?paysStackOverflow</strong>;</p>
 
@@ -422,7 +422,7 @@
 
 		
 <script>
-	var SLConfig = {"current_user":{"id":947559,"username":"antoinegodet","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/a533713244e4b2e7919a57a69e941b75?s=140\u0026d=https%3A%2F%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":2071510,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"default_deck_tag_id":null,"editor_grid":true,"editor_grid_on_top":false,"editor_snap":true,"editor_fixed_notes":false,"developer_mode":false,"speaker_layout":null,"phone_number":null,"phone_country_code":null,"media_sources":null,"export_controls":null,"export_slide_number":null,"export_slide_notes":null,"export_separate_fragments":null},"email":"antoineg.work@gmail.com","notify_on_receipt":true,"billing_address":null,"billing_vat_id":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1,"storage_used":167418,"storage_limit":262144000},"deck":{"id":1354041,"slug":"deck","title":"WebSémantique","description":"","width":960,"height":700,"visibility":"all","published_at":"2018-10-21T21:53:37.469Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/0a7464971936c998609d60fecc6bd055/thumb.jpg?1542665668","view_count":37,"user":{"id":947559,"username":"antoinegodet","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/a533713244e4b2e7919a57a69e941b75?s=140\u0026d=https%3A%2F%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":2071510,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"default_deck_tag_id":null}},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"shuffle":null,"should_loop":false,"share_notes":null,"slide_number":null,"slide_count":22,"rtl":false,"version":2,"collaborative":true,"deck_user_editor_limit":1,"data_updated_at":1542666275607,"font_typekit":null,"font_google":null,"notes":{}},"user":{"id":947559,"username":"antoinegodet","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/a533713244e4b2e7919a57a69e941b75?s=140\u0026d=https%3A%2F%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":2071510,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"default_deck_tag_id":null}}};
+	var SLConfig = {"current_user":{"id":947559,"username":"antoinegodet","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/a533713244e4b2e7919a57a69e941b75?s=140\u0026d=https%3A%2F%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":2071510,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"default_deck_tag_id":null,"editor_grid":true,"editor_grid_on_top":false,"editor_snap":true,"editor_fixed_notes":false,"developer_mode":false,"speaker_layout":null,"phone_number":null,"phone_country_code":null,"media_sources":null,"export_controls":null,"export_slide_number":null,"export_slide_notes":null,"export_separate_fragments":null},"email":"antoineg.work@gmail.com","notify_on_receipt":true,"billing_address":null,"billing_vat_id":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1,"storage_used":559145,"storage_limit":262144000},"deck":{"id":1354041,"slug":"deck","title":"WebSémantique","description":"","width":960,"height":700,"visibility":"all","published_at":"2018-10-21T21:53:37.469Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/0a7464971936c998609d60fecc6bd055/thumb.jpg?1542665668","view_count":42,"user":{"id":947559,"username":"antoinegodet","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/a533713244e4b2e7919a57a69e941b75?s=140\u0026d=https%3A%2F%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":2071510,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"default_deck_tag_id":null}},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"shuffle":null,"should_loop":false,"share_notes":null,"slide_number":null,"slide_count":22,"rtl":false,"version":2,"collaborative":true,"deck_user_editor_limit":1,"data_updated_at":1542717581006,"font_typekit":null,"font_google":null,"notes":{}},"user":{"id":947559,"username":"antoinegodet","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/a533713244e4b2e7919a57a69e941b75?s=140\u0026d=https%3A%2F%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":2071510,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"default_deck_tag_id":null}}};
 </script>
 
 		<script>
