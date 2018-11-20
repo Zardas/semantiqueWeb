@@ -39,7 +39,7 @@ public class request3 {
 		m.add(m_stackoverflow);
 		m.add(m_happiness);
 		
-		String query_string = request3();
+		String query_string = request3_return();
 	
 		
 		Query query = QueryFactory.create(query_string);
@@ -55,7 +55,7 @@ public class request3 {
 	 * Requête : fournit les pays avec leur coefficient salaire_moyen/bonheur par habitant (pour les dévellopeurs (utilisant stack overflow))
 	 * @param
 	 */
-	public static String request3() {
+	public static String request3_return() {
 		return ("PREFIX schema: <http://schema.org/>" +
                 "PREFIX geof: <http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#>" +
                 "PREFIX op: <http://environement.data.gov.au/def/op#>" +
