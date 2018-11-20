@@ -1,12 +1,13 @@
-import java.io;
+
+import java.io.InputStream;
 
 import org.apache.jena.query.*;
 
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.util.FileManager;
 
-public class projetWebSemantiqueMultiple {
+public class request3 {
 
 	static String graphe_stackoverflow = "graphe.ttl";
 	static String graphe_happiness = "happiness_report.ttl";
@@ -45,9 +46,7 @@ public class projetWebSemantiqueMultiple {
 		try (QueryExecution query_execution = QueryExecutionFactory.create(query, m)) {
     		ResultSet results = query_execution.execSelect() ;
     		ResultSetFormatter.out(System.out, results, query) ;
-	    } catch {
-			throw new IllegalArgumentException("Requête " + query_string + " invalide");
-		}
+	    }
 			
 		
 	}
@@ -56,7 +55,7 @@ public class projetWebSemantiqueMultiple {
 	 * Requête : fournit les pays avec leur coefficient salaire_moyen/bonheur par habitant (pour les dévellopeurs (utilisant stack overflow))
 	 * @param
 	 */
-	public request3() {
+	public static String request3() {
 		return ("PREFIX schema: <http://schema.org/>" +
                 "PREFIX geof: <http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#>" +
                 "PREFIX op: <http://environement.data.gov.au/def/op#>" +
