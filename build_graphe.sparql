@@ -8,7 +8,6 @@ CONSTRUCT {
         schema:repeatFrequency			?StackOverflowVisit;
 		dbpedia:duration 				?YearsCoding;
 		dbpedia:age 					?Age;
-		dbpedia:education 				?FormalEducation;
 		dbpedia:time 					?WakeTime;
 		cwmo:tool 						?IDE;
 		schema:gender 					?Gender;
@@ -20,7 +19,6 @@ CONSTRUCT {
 		schema:operatingSystem 			?OperatingSystem;
 		schema:actionPlatform 			?Platform;
 		schema:ComputerLanguage 		?LanguageWorkedWith;
-		schema:CommunicateAction:object ?CommunicationTools;
 		schema:baseSalary 				?Salary.
 	?Salary schema:salaryCurrency 		?CurrencySymbol;
 			schema:estimatedSalary 		?ConvertedSalary;
