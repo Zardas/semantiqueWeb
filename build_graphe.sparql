@@ -1,10 +1,13 @@
+#Compile with ./tarql -d semicolon /comptes/E134932Q/Documents/M1/Web_Semantique/Projet/build_graphe.sparql > result.ttl
+
 PREFIX dbpedia: <http://dbpedia.org/ontology/>
 PREFIX cwmo: 	<http://purl/org/cwmo/>
 PREFIX schema: 	<http://schema.org/>
 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
 CONSTRUCT {
-	?URI a schema:Person;
-        schema:identifier               ?Respondent;
+	?PersonId a schema:Person;
         schema:repeatFrequency			?StackOverflowVisit;
 		dbpedia:duration 				?YearsCoding;
 		dbpedia:age 					?Age;
@@ -14,7 +17,7 @@ CONSTRUCT {
 		schema:country 					?Country;
 		schema:jobTitle 				?DevType;
 		schema:employmentType 			?Employment;
-		schema:numberOfEmployees 		?companySize;
+		schema:numberOfEmployees 		?CompanySize;
 		schema:openingHours 			?hoursComputer;
 		schema:operatingSystem 			?OperatingSystem;
 		schema:actionPlatform 			?Platform;
@@ -25,5 +28,25 @@ CONSTRUCT {
 }
 FROM <file:dev.csv>
 WHERE {
-	BIND(URI(CONCAT('http://devellopeurs/', ?Respondent)) AS ?URI)
+	BIND(URI(?Respondent) AS ?PersonId)
+	BIND(URI(xsd:integer(?Salary)) AS ?Salary)
+	BIND(xsd:string(?Country) AS ?Country)
+	BIND(xsd:string(?Employment) AS ?Employment)
+	BIND(xsd:string(?CompanySize) AS ?CompanySize)
+	BIND(xsd:string(?DevType) AS ?DevType)
+	BIND(xsd:string(?YearsCoding) AS ?YearsCoding)
+	BIND(xsd:integer(?ConvertedSalary) AS ?ConvertedSalary)
+	BIND(xsd:string(?CurrencySymbol) AS ?CurrencySymbol)
+	BIND(xsd:string(?LanguageWorkedWith) AS ?LanguageWorkedWith)
+	BIND(xsd:string(?PlatformWorkedWith) AS ?PlatformWorkedWith)
+	BIND(xsd:string(?IDE) AS ?IDE)
+	BIND(xsd:string(?OperatingSystem) AS ?OperatingSystem)
+	BIND(xsd:string(?StackOverflowVisit) AS ?StackOverflowVisit)
+	BIND(xsd:string(?WakeTime) AS ?WakeTime)
+	BIND(xsd:string(?HoursComputer) AS ?HoursComputer)
+	BIND(xsd:string(?Gender) AS ?Gender)
+	BIND(xsd:string(?Age) AS ?Age)
 }
+
+
+
