@@ -24,7 +24,7 @@ CONSTRUCT {
 		schema:ComputerLanguage 		?LanguageWorkedWith;
 		schema:baseSalary 				?Salary.
 	?Salary schema:salaryCurrency 		?CurrencySymbol;
-			schema:estimatedSalary 		?ConvertedSalary;
+		schema:estimatedSalary 		?ConvertedSalary.
 }
 FROM <file:dev.csv>
 WHERE {
