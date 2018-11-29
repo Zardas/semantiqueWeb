@@ -8,7 +8,7 @@ import org.apache.jena.util.FileManager;
 
 public class request1and2 {
 
-	static String graphe = "graphe.ttl";
+	static String graphe = "result.ttl";
 	
 	/**
 	 * @param args
@@ -26,7 +26,7 @@ public class request1and2 {
 		
 		m.read(stream, null, "Turtle");
 		
-		String query_string = request1();
+		String query_string = request2();
 	
 		
 		Query query = QueryFactory.create(query_string);
@@ -43,10 +43,16 @@ public class request1and2 {
 	 * @paramxsd:integer(AVG(?ConvertedSalary)
 	 */
 	public static String request1() {
-		return ("SELECT DISTINCT(?Country) WHERE {" +
-				"?Respondent <https://schema.org/Country> ?Country;" +
-				"?Respondent <http://schema.org/numberOfEmployees> '10,000 or more employees'" +
-			"}");
+		return (  "PREFIX schema:<http://schema.org/>"
+				+ "PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
+				+ "SELECT distinct ?Country "
+				+ "WHERE {"
+				+ "	?PersonId rdf:type schema:Person." 
+				+ " ?PersonId schema:country ?Country."
+				+ " ?PersonId schema:numberOfEmployees ?nbEmployees."
+				+ " FILTER(?nbEmployees = \"10,000 or more employees\")"
+				+ "}"
+			   );
 	}
 	
 	/**
@@ -54,12 +60,17 @@ public class request1and2 {
 	 * @param
 	 */
 	 public static String request2() {
-		 return("PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
-				"SELECT DISTINCT(?ide) ?respondent2 WHERE {" +
-				"?respondent <https://schema.org/Country> 'Paraguay'" +
-				"?respondent <http://purl/org/cwmo/tool> ?ide." +
-				"BIND(xsd:integer(?respondent) AS ?respondent2)" +
-			"}");
+		 return(  "PREFIX schema:<http://schema.org/>" 
+				+ "PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
+		 		+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" 
+				+ "PREFIX cwmo:<http://purl/org/cwmo/>"
+				+ "SELECT ?PersonId ?ide "
+				+ "WHERE {"
+				+ 		"?PersonId rdf:type schema:Person."
+				+		"?PersonId schema:country ?Country. "
+				+		"?PersonId cwmo:tool ?ide."
+				+ "FILTER(?Country = \"Paraguay\")" 
+			+"}");
 	}
 	
 
