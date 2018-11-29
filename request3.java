@@ -61,17 +61,18 @@ public class request3 {
                 "PREFIX op: <http://environement.data.gov.au/def/op#>" +
                 "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
                 "PREFIX owl:<http://www.w3.org/2002/07/owl#>" +
-                "SELECT DISTINCT(?pays) (xsd:integer(?SalaireMoyen) / xsd:float(AVG(?EconomyGDPPerCapita)) AS ?result)" +
+                "SELECT DISTINCT ?pays (xsd:integer(?SalaireMoyen) / ?EconomyGDP AS ?result)" +
                 "WHERE {" +
                 "  ?x schema:country ?paysStackOverflow;" +
                 "     schema:baseSalary ?salary." +
                 "  ?salary schema:estimatedSalary ?ConvertedSalary." +
                 "" +
-                "  ?y geop:country ?paysHappiness;" +
+                "  ?y geof:country ?paysHappiness;" +
                 "     op:ecoGDPPerCapita ?EconomyGDPPerCapita." +
                 "" +
                 "  ?paysStackOverflow owl:sameAs ?paysHappiness." +
-                "  BIND(xsd:integer(AVG(?ConvertedSalary)) AS ?SalaireMoyen)" +
+                "  BIND(xsd:integer(AVG(?ConvertedSalary)) AS ?SalaireMoyen)"
+                + "BIND(xsd:float(AVG(?EconomyGDPPerCapita)) AS ?EconomyGDP)" +
                 "}");
 	}
 	
