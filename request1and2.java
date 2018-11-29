@@ -26,7 +26,7 @@ public class request1and2 {
 		
 		m.read(stream, null, "Turtle");
 		
-		String query_string = request2();
+		String query_string = request1();
 	
 		
 		Query query = QueryFactory.create(query_string);

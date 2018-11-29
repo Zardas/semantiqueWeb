@@ -9,7 +9,7 @@ import org.apache.jena.util.FileManager;
 
 public class request3 {
 
-	static String graphe_stackoverflow = "graphe.ttl";
+	static String graphe_stackoverflow = "result.ttl";
 	static String graphe_happiness = "happiness_report.ttl";
 	
 	/**
@@ -56,24 +56,29 @@ public class request3 {
 	 * @param
 	 */
 	public static String request3_return() {
-		return ("PREFIX schema: <http://schema.org/>" +
-                "PREFIX geof: <http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#>" +
-                "PREFIX op: <http://environement.data.gov.au/def/op#>" +
-                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
-                "PREFIX owl:<http://www.w3.org/2002/07/owl#>" +
-                "SELECT DISTINCT ?pays (xsd:integer(?SalaireMoyen) / ?EconomyGDP AS ?result)" +
-                "WHERE {" +
-                "  ?x schema:country ?paysStackOverflow;" +
-                "     schema:baseSalary ?salary." +
-                "  ?salary schema:estimatedSalary ?ConvertedSalary." +
-                "" +
-                "  ?y geof:country ?paysHappiness;" +
-                "     op:ecoGDPPerCapita ?EconomyGDPPerCapita." +
-                "" +
-                "  ?paysStackOverflow owl:sameAs ?paysHappiness." +
-                "  BIND(xsd:integer(AVG(?ConvertedSalary)) AS ?SalaireMoyen)"
-                + "BIND(xsd:float(AVG(?EconomyGDPPerCapita)) AS ?EconomyGDP)" +
-                "}");
+		return (  "PREFIX schema: <http://schema.org/>" 
+                + "PREFIX geof: <http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#>"
+                + "PREFIX op: <http://environement.data.gov.au/def/op#>"
+                + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>"
+                + "PREFIX owl:<http://www.w3.org/2002/07/owl#>"
+                + "PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
+                
+                + "SELECT ?PersonId ?pays ?salary"
+                //+" FROM <file:result.ttl>"
+                //+" FROM NAMED <file:happiness_report.ttl> "
+                
+                + " WHERE {"
+	            + "		   ?PersonId rdf:type schema:Person." 
+	            +" 		   ?PersonId schema:country ?pays."
+	            +"		   ?PersonId schema:baseSalary ?salary."
+	            //+"         ?salary schema:estimatedSalary ?ConvertedSalary."
+	            //+" 		   ?y geof:country ?paysHappiness."
+	            //+"     	   ?y op:ecoGDPPerCapita ?EconomyGDPPerCapita."
+	            //+" 	   	   FILTER(lcase(str(?pays)) = lcase(str(?paysHappiness)))"
+	            +"		  }"
+                //+ "GROUP BY ?pays "
+                //+ "ORDER BY ?EconomyGDPPerCapita "
+                );
 	}
 	
 
