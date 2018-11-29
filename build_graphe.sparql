@@ -1,4 +1,4 @@
-#Compile with ./tarql -d semicolon /comptes/E134932Q/Documents/M1/Web_Semantique/Projet/build_graphe.sparql > result.ttl
+#Compile with ./tarql -d semicolon /comptes/E134932Q/Documents/M1/Web_Semantique/projet_semantique/build_graphe.sparql > result.ttl
 
 PREFIX dbpedia: <http://dbpedia.org/ontology/>
 PREFIX cwmo: 	<http://purl/org/cwmo/>
