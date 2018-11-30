@@ -26,7 +26,7 @@ public class request1and2 {
 		
 		m.read(stream, null, "Turtle");
 		
-		String query_string = request1();
+		String query_string = request2();
 	
 		
 		Query query = QueryFactory.create(query_string);
@@ -52,6 +52,7 @@ public class request1and2 {
 				+ " ?PersonId schema:numberOfEmployees ?nbEmployees."
 				+ " FILTER(?nbEmployees = \"10,000 or more employees\")"
 				+ "}"
+				+ "LIMIT 20"
 			   );
 	}
 	

@@ -57,30 +57,28 @@ public class request3 {
 	 */
 	public static String request3_return() {
 		return (  "PREFIX schema: <http://schema.org/>" 
-                + "PREFIX geof: <http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#>"
-                + "PREFIX op: <http://environement.data.gov.au/def/op#>"
+                + "PREFIX op: <http://environment.data.gov.au/def/op#>"
                 + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>"
                 + "PREFIX owl:<http://www.w3.org/2002/07/owl#>"
                 + "PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
+                + "PREFIX dbo: <http://dbpedia.org/ontology/>"
+                + "PREFIX rank: <http://dbpedia.org/ontology/rank#>"
                 
-                + "SELECT ?PersonId ?pays ?salary"
-                //+" FROM <file:result.ttl>"
-                //+" FROM NAMED <file:happiness_report.ttl> "
+                + "SELECT ?pays (AVG(xsd:float(?ConvertedSalary)) AS ?SalaireMoyen) ?HappyMoney"
                 
                 + " WHERE {"
 	            + "		   ?PersonId rdf:type schema:Person." 
 	            +" 		   ?PersonId schema:country ?pays."
 	            +"		   ?PersonId schema:baseSalary ?salary."
-	            //+"         ?salary schema:estimatedSalary ?ConvertedSalary."
-	            //+" 		   ?y geof:country ?paysHappiness."
-	            //+"     	   ?y op:ecoGDPPerCapita ?EconomyGDPPerCapita."
-	            //+" 	   	   FILTER(lcase(str(?pays)) = lcase(str(?paysHappiness)))"
+	            +"         ?salary schema:estimatedSalary ?ConvertedSalary."
+	            +" 		   ?y dbo:country ?paysHappiness;"
+	            +"     	      op:ecoGDPperCapita ?HappyMoney."
+	            +" 	   	   FILTER(lcase(str(?pays)) = lcase(str(?paysHappiness)))"
 	            +"		  }"
-                //+ "GROUP BY ?pays "
-                //+ "ORDER BY ?EconomyGDPPerCapita "
+	            +" GROUP BY ?pays ?HappyMoney"
+                +" ORDER BY DESC(?HappyMoney)"
                 );
 	}
-	
 
 }
 	
