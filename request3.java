@@ -52,7 +52,7 @@ public class request3 {
 	}
 	
 	/**
-	 * Requête : fournit les pays avec leur coefficient salaire_moyen/bonheur par habitant (pour les dévellopeurs (utilisant stack overflow))
+	 * Requête : fournit les 10 utilisateurs de StackOverflow les mieux payés habitant dans les pays ayant l'indice economique le plus élévé.
 	 * @param
 	 */
 	public static String request3_return() {
@@ -64,19 +64,21 @@ public class request3 {
                 + "PREFIX dbo: <http://dbpedia.org/ontology/>"
                 + "PREFIX rank: <http://dbpedia.org/ontology/rank#>"
                 
-                + "SELECT ?pays (AVG(xsd:float(?ConvertedSalary)) AS ?SalaireMoyen) ?HappyMoney"
+                + "SELECT ?PersonId ?pays ?HappyMoney ?ConvertedSalary"
                 
                 + " WHERE {"
 	            + "		   ?PersonId rdf:type schema:Person." 
 	            +" 		   ?PersonId schema:country ?pays."
-	            +"		   ?PersonId schema:baseSalary ?salary."
-	            +"         ?salary schema:estimatedSalary ?ConvertedSalary."
+	            +"		   ?PersonId schema:numberOfEmployees ?nbEmployees."
+	            +"		   ?PersonId schema:estimatedSalary ?ConvertedSalary."
 	            +" 		   ?y dbo:country ?paysHappiness;"
 	            +"     	      op:ecoGDPperCapita ?HappyMoney."
+	            +" 		   FILTER(?nbEmployees = \"10,000 or more employees\") "
 	            +" 	   	   FILTER(lcase(str(?pays)) = lcase(str(?paysHappiness)))"
 	            +"		  }"
-	            +" GROUP BY ?pays ?HappyMoney"
-                +" ORDER BY DESC(?HappyMoney)"
+	            +" GROUP BY ?PersonId ?HappyMoney ?pays ?ConvertedSalary"
+                +" ORDER BY DESC(?ConvertedSalary) DESC(?HappyMoney)"
+                +" LIMIT 20"
                 );
 	}
 
