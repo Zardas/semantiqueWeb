@@ -39,7 +39,8 @@ public class request3 {
 		m.add(m_stackoverflow);
 		m.add(m_happiness);
 		
-		String query_string = request3_return();
+		String query_string = request3();
+		//String query_string = request4()
 	
 		
 		Query query = QueryFactory.create(query_string);
@@ -55,7 +56,7 @@ public class request3 {
 	 * Requête : fournit les 20 utilisateurs de StackOverflow les mieux payés habitant dans les pays ayant l'indice economique le plus élévé.
 	 * @param
 	 */
-	public static String request3_return() {
+	public static String request3() {
 		return (  "PREFIX schema: <http://schema.org/>" 
                 + "PREFIX op: <http://environment.data.gov.au/def/op#>"
                 + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>"
@@ -86,7 +87,7 @@ public class request3 {
 	 * Requête : fournit le salaire moyen des devellopeurs dans les 30 pays avec l'indice monetaire le plus bas.
 	 * @param
 	 */
-	public static String request4_return() {
+	public static String request4() {
 		return (  "PREFIX schema: <http://schema.org/>" 
                 + "PREFIX op: <http://environment.data.gov.au/def/op#>"
                 + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>"
