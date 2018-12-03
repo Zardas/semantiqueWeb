@@ -52,7 +52,7 @@ public class request3 {
 	}
 	
 	/**
-	 * Requête : fournit les 10 utilisateurs de StackOverflow les mieux payés habitant dans les pays ayant l'indice economique le plus élévé.
+	 * Requête : fournit les 20 utilisateurs de StackOverflow les mieux payés habitant dans les pays ayant l'indice economique le plus élévé.
 	 * @param
 	 */
 	public static String request3_return() {
@@ -77,8 +77,38 @@ public class request3 {
 	            +" 	   	   FILTER(lcase(str(?pays)) = lcase(str(?paysHappiness)))"
 	            +"		  }"
 	            +" GROUP BY ?PersonId ?HappyMoney ?pays ?ConvertedSalary"
-                +" ORDER BY DESC(?ConvertedSalary) DESC(?HappyMoney)"
+                +" ORDER BY DESC(xsd:integer(?ConvertedSalary)) DESC(xsd:integer(?HappyMoney))"
                 +" LIMIT 20"
+                );
+	}
+	
+	/**
+	 * Requête : fournit le salaire moyen des devellopeurs dans les 30 pays avec l'indice monetaire le plus bas.
+	 * @param
+	 */
+	public static String request4_return() {
+		return (  "PREFIX schema: <http://schema.org/>" 
+                + "PREFIX op: <http://environment.data.gov.au/def/op#>"
+                + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>"
+                + "PREFIX owl:<http://www.w3.org/2002/07/owl#>"
+                + "PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
+                + "PREFIX dbo: <http://dbpedia.org/ontology/>"
+                + "PREFIX rank: <http://dbpedia.org/ontology/rank#>"
+                
+                + "SELECT Distinct ?pays ?HappyMoney (FLOOR(AVG (xsd:decimal(?ConvertedSalary))) AS ?SalaireMoyen)"
+                
+                + " WHERE {"
+	            + "		   ?PersonId rdf:type schema:Person." 
+	            +" 		   ?PersonId schema:country ?pays."
+	            +"		   ?PersonId schema:numberOfEmployees ?nbEmployees."
+	            +"		   ?PersonId schema:estimatedSalary ?ConvertedSalary."
+	            +" 		   ?y dbo:country ?paysHappiness;"
+	            +"     	      op:ecoGDPperCapita ?HappyMoney."
+	            +" 	   	   FILTER(lcase(str(?pays)) = lcase(str(?paysHappiness)))"
+	            +"		  }"
+	            +" GROUP BY ?HappyMoney ?pays "
+                +" ORDER BY ASC(xsd:integer(?HappyMoney))"
+                +" LIMIT 30"
                 );
 	}
 
