@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+
+:StackOverflowSurvey rdf:type void:Dataset ;
+		     foaf:homepage 	      <https://stackoverflow.com/> ;
+		     dcterms:title            "StackOverflow 2018 Survey";
+                     dcterms:description      "A survey conducted by the website StackOverflow in order to gather data about its users.";
+		     dcterms:publisher        :Bequet-Ermoy_Charles;
+                     dcterms:publisher        :Godet_Antoine;
+                     dcterms:publisher        :Gueguen_Ronan;
+		     dcterms:subject 	      <http://dbpedia.org/resource/Computer_science> ;
+		     void:feature             <http://www.w3.org/ns/formats/Turtle>.
+
+:Bequet-Ermoy_Charles     a                        foaf:Person;
+                          rdfs:label               "Charles Bequet--Ermoy";
+                          foaf:mbox                <charles.bequet--ermoy@etu.univ-nantes.fr>.
+
+:Godet_Antoine      a                        foaf:Person;
+                    rdfs:label               "Antoine Godet";
+                    foaf:mbox                <antoine.godet@etu.univ-nantes.fr>.
+
+:Gueguen_Ronan      a                        foaf:Person;
+                    rdfs:label               "Ronan Gueguen";
+                    foaf:mbox                <ronan.gueguen@etu.univ-nantes.fr>.
